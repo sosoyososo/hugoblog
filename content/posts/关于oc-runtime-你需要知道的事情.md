@@ -1,0 +1,8 @@
+---
+title: '关于OC runtime 你需要知道的事情'
+date: Mon, 22 Dec 2014 11:06:41 +0000
+draft: false
+tags: ['Read Note']
+---
+
+这是我对OC语言本身回顾的第二弹，熟悉的人直接跳过。 **关于runtime来源** OC有多个runtime，OS X上的runtime是apple为OS X和 iOS 开发提供的，另外还有 GNU Compiler Collection提供的有着相似接口的开源代码runtime。 **关于OC/OC runtime/C之间的关系** OC是C/C++的超集，是一个动态语言(关于更多OC语言动态特性的东西可以看一下[这篇译文](http://limboy.me/ios/2013/08/03/dynamic-tips-and-tricks-with-objective-c.html))，在C的语言层面增加了一些语法，关键字和常用类。这些新增的部分为OC提供了动态特性，而这些部分的功能则是由OC的runtime提供支持。这里就简单的列出对runtime我们需要知道的一些事情。 **runtime的具体作用** runtime在底层为OC语言本省的各种功能提供支持，在编译的时候，所有OC的类对应着runtime中保存着方法和变量列表的结构体，在调用一个类或者实例的方法的时候，runtime查找到合适的方法实现，并调用它进行功能的实现。在代码运行过程中，runtime允许代码修改代码本身，增删改查方法，方法的实现，方法的传递。甚至增删改查一个类。所以runtime是OC的核心，熟悉和理解了runtime就理解了OC。 **runtime的API功能**: API功能的中文解释可以看[这里](http://blog.devwu.com/develop/2014-08-17/objcruntime-explore2/) runtime: 我们可以用runtime接口对类列表进行增删改查，修改runtime对某个实例对象保存的关系(跟修饰porterty的copy/retain/assign/nonatomic/类比)，对某个实例发送消息 Image: 也就是OC代码所是使用的Library。我们可以使用runtime获取程序加载的所有Library，每个Library中都有哪些类，检测某个类所在的Library。 metaClass: 在runtime中跟Class一一对应，不可修改，但是可以跟随Class一起创建删除。 Class: 保存变量(Ivar)信息、方法(Method)和属性(Property)列表，创建之后，变量信息不可修改，但方法信息可以被修改。 这是我们使用runtime最多的地方，类的所有信息都可以获取到，大部分信息都可以修改(变量不可修改) 实例: 根据类保存的信息生成的一个可以被实际使用的实例对象。可以使用runtime修改变量的值，获取或者修改类信息，复制或者直接销毁本身。 Ivar: 获取名字，encoding信息，内存偏移 Method : 保存SEL和IMP之间的关系，可以被修改，可以获取相应信息 SEL: 保存name和UID之间的关系，可以创建和获取信息 Protocol: 可以创建并获取信息，在创建之后注册之前可以修改 property: 保存一个键值对的列表。表明了property的类型，名字，内存和多线程操作的兼容 获取所有信息，不可修改。 其他: 关于block的一些简单操作 关于在遍历数据集合过程中修改集合内容的异常处理

@@ -1,0 +1,4 @@
+baseURL = "http://blog.karsa.info/"
+languageCode = "en-us"
+title = "Karsa"
+theme = "ananke"

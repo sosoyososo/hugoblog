@@ -2,3 +2,4 @@ themes/
 resources/
 nohup.out
 public/
+.hugo_build.lock

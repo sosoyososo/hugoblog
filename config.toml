@@ -1,4 +1,35 @@
 baseURL = "http://blog.karsa.info/"
 languageCode = "en-us"
-title = "Karsa"
-theme = "ananke"
+title = "Karsa's Blog"
+theme = "anatole"
+[permalinks]	
+  posts = '/:year/:month/:title/'
+[params]
+  title = "I'm Karsa"
+  author = "Karsa"
+  description = "技术|思考|投资"
+  profilePicture = "images/profile.png"
+  doNotLoadAnimations = false
+  contentratio = 0.7
+  pygmentsCodeFences = true
+  pygmentsUseClasses = true
+
+
+[menu]
+  [[menu.main]]
+  name = "Home"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[menu.main]]
+  name = "Posts"
+  weight = 200
+  identifier = "posts"
+  url = "/posts/"
+
+  [[menu.main]]
+  name = "About"
+  weight = 300
+  identifier = "about"
+  url = "/about/"

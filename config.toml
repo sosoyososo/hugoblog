@@ -9,7 +9,7 @@ googleAnalytics = "G-Y8D4K3X9QY"
 [params]
   title = "I'm Karsa"
   author = "Karsa"
-  description = "技术|思考|投资"
+  description = "技术|思考|投资\n回头看，我说的都是错的"
   profilePicture = "images/profile.png"
   doNotLoadAnimations = false
   contentratio = 0.7

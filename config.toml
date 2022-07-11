@@ -2,6 +2,8 @@ baseURL = "http://blog.karsa.info/"
 languageCode = "en-us"
 title = "Karsa's Blog"
 theme = "anatole"
+googleAnalytics = "G-Y8D4K3X9QY"
+
 [permalinks]	
   posts = '/:year/:month/:title/'
 [params]

@@ -4,6 +4,9 @@ title = "Karsa's Blog"
 theme = "anatole"
 googleAnalytics = "G-Y8D4K3X9QY"
 
+[taxonomies]
+  tag = "tags"
+
 [permalinks]	
   posts = '/:year/:month/:title/'
 [params]
